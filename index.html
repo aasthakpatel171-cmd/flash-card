@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Quiz - Learn & Review</title>
+    <link rel="stylesheet" href="flashcard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>📚 Flashcard Quiz</h1>
+            <p class="subtitle">Learn and review information on various topics</p>
+        </header>
+
+        <!-- Deck Selection Screen -->
+        <div id="deck-selection" class="screen">
+            <h2>Choose a Deck</h2>
+            <div id="deck-list" class="deck-grid">
+                <!-- Decks will be dynamically inserted here -->
+            </div>
+            <div class="deck-progress">
+                <h3>Your Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="total-cards">0</span>
+                        <span class="stat-label">Total Cards</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="mastered-cards">0</span>
+                        <span class="stat-label">Mastered</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="learning-cards">0</span>
+                        <span class="stat-label">Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Session Screen -->
+        <div id="study-session" class="screen hidden">
+            <div class="study-header">
+                <button id="back-to-decks" class="btn-back">← Back to Decks</button>
+                <div class="study-progress">
+                    <span id="current-card-num">1</span> / <span id="total-card-count">10</span>
+                </div>
+            </div>
+
+            <div class="scene">
+                <div class="card" id="flashcard">
+                    <div class="card-face card-front">
+                        <h3 id="card-front-text">Question</h3>
+                        <p class="flip-hint">Click to flip</p>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3 id="card-back-text">Answer</h3>
+                        <div class="buttons">
+                            <button id="btn-forgot" class="btn-fail">Forgot</button>
+                            <button id="btn-remembered" class="btn-pass">Remembered</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">✅</span>
+                    <span id="correct-count">0</span> Correct
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">❌</span>
+                    <span id="incorrect-count">0</span> To Review
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen hidden">
+            <div class="results-content">
+                <h2>🎉 Session Complete!</h2>
+                <div class="results-stats">
+                    <div class="result-circle">
+                        <span id="final-score">0%</span>
+                        <span class="result-label">Score</span>
+                    </div>
+                </div>
+                <div class="results-details">
+                    <p>Cards Reviewed: <span id="reviewed-count">0</span></p>
+                    <p>Mastered: <span id="mastered-count">0</span></p>
+                    <p>Need Review: <span id="review-count">0</span></p>
+                </div>
+                <div class="results-buttons">
+                    <button id="btn-study-again" class="btn-primary">Study Again</button>
+                    <button id="btn-go-home" class="btn-secondary">Back to Decks</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="flashcard.js"></script>
+</body>
+
+</html>

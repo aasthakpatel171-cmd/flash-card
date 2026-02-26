@@ -1,0 +1,452 @@
+/* ==================== RESET & BASE STYLES ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* ==================== HEADER ==================== */
+header {
+  background: linear-gradient(135deg, #4a90e2 0%, #667eea 100%);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ==================== SCREENS ==================== */
+.screen {
+  padding: 30px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== DECK SELECTION ==================== */
+#deck-selection h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.deck-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f5f7fa 100%);
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.deck-card:hover {
+  transform: translateY(-5px);
+  border-color: #4a90e2;
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+}
+
+.deck-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.deck-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.card-count {
+  display: inline-block;
+  background: #4a90e2;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ==================== PROGRESS STATS ==================== */
+.deck-progress {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.deck-progress h3 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4a90e2;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ==================== STUDY SESSION ==================== */
+.study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.btn-back {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #e0e0e0;
+}
+
+.study-progress {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ==================== FLASHCARD STYLES ==================== */
+.scene {
+  width: 100%;
+  max-width: 400px;
+  height: 280px;
+  perspective: 1000px;
+  margin: 20px auto;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  text-align: center;
+}
+
+.card-front {
+  background: linear-gradient(145deg, #ffffff 0%, #f0f4f8 100%);
+  color: #333;
+}
+
+.card-front h3 {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.flip-hint {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #4a90e2 0%, #667eea 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-back h3 {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* ==================== BUTTONS ==================== */
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-fail,
+.btn-pass {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-fail {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-fail:hover {
+  background: #ee5a5a;
+  transform: scale(1.05);
+}
+
+.btn-pass {
+  background: #51cf66;
+  color: white;
+}
+
+.btn-pass:hover {
+  background: #40c057;
+  transform: scale(1.05);
+}
+
+/* ==================== STUDY STATS ==================== */
+.study-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.stat-icon {
+  font-size: 1.3rem;
+}
+
+/* ==================== RESULTS SCREEN ==================== */
+.results-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.results-content h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.results-stats {
+  margin-bottom: 30px;
+}
+
+.result-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #4a90e2 0%, #667eea 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
+}
+
+.result-circle span:first-child {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.result-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.results-details {
+  margin-bottom: 30px;
+}
+
+.results-details p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+.results-details span {
+  font-weight: 600;
+  color: #333;
+}
+
+.results-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(145deg, #4a90e2 0%, #667eea 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(74, 144, 226, 0.4);
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .screen {
+    padding: 20px;
+  }
+
+  .deck-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .scene {
+    height: 240px;
+  }
+
+  .card-face {
+    padding: 20px;
+  }
+
+  .card-front h3,
+  .card-back h3 {
+    font-size: 1.2rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn-fail,
+  .btn-pass {
+    width: 100%;
+  }
+
+  .study-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .results-buttons {
+    flex-direction: column;
+  }
+}
